@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>GrowthPilot AI — Seu Acesso Está Pronto</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0D0A08;--bg2:#110E0B;--bg3:#1A1108;
+  --burg:#6B1A2A;--burg2:#8B2235;
+  --gold:#C8963E;--gold2:#E8B05A;--gold3:#F0C87A;
+  --ivory:#F5EAD0;--ivory2:#E8D8B8;--ivory3:#C8B898;
+  --muted:#9A8070;--dim:#5A4838;
+  --border:rgba(200,150,62,0.15);--border2:rgba(200,150,62,0.35);
+  --glass:rgba(200,150,62,0.04);--glass2:rgba(200,150,62,0.08);
+  --green:#4ADE80;--green-bg:rgba(74,222,128,0.06);--green-border:rgba(74,222,128,0.2);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --mono:'DM Mono',monospace;
+  --r:8px;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ivory);
+  font-family:var(--mono);font-size:15px;
+  line-height:1.7;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:flex-start;
+  padding:2rem 1.4rem 4rem;
+}
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.032;pointer-events:none;z-index:9999;
+}
+
+.wrap{width:100%;max-width:560px;margin:0 auto}
+
+/* LOGO */
+.logo{
+  font-family:var(--serif);font-size:1.1rem;font-weight:400;
+  color:var(--ivory);letter-spacing:.06em;
+  text-align:center;margin-bottom:2.5rem;
+  opacity:.6;
+}
+.logo span{color:var(--gold)}
+
+/* SUCCESS BADGE */
+.success-badge{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  background:var(--green-bg);
+  border:1px solid var(--green-border);
+  border-radius:100px;
+  padding:.5rem 1.2rem;
+  font-family:var(--mono);font-size:.65rem;
+  font-weight:500;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--green);
+  margin:0 auto 2rem;
+  width:fit-content;
+  animation:fadeUp .6s .1s ease forwards;opacity:0;
+}
+.success-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--green);
+  animation:blink 1.5s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* HEADLINE */
+.headline{
+  text-align:center;
+  animation:fadeUp .7s .2s ease forwards;opacity:0;
+  margin-bottom:2rem;
+}
+.headline h1{
+  font-family:var(--serif);
+  font-size:clamp(2rem,7vw,3rem);
+  font-weight:300;line-height:1.12;
+  letter-spacing:-.01em;color:var(--ivory);
+  margin-bottom:.7rem;
+}
+.headline h1 em{font-style:italic;color:var(--gold)}
+.headline p{
+  font-family:var(--mono);font-size:.8rem;
+  color:var(--muted);line-height:1.8;
+  letter-spacing:.02em;max-width:400px;margin:0 auto;
+}
+
+/* MAIN ACCESS CARD */
+.access-card{
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  border-radius:var(--r);
+  padding:2rem 1.6rem;
+  margin-bottom:1.5rem;
+  position:relative;overflow:hidden;
+  animation:fadeUp .7s .35s ease forwards;opacity:0;
+}
+.access-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.access-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 40% at 50% 0%,rgba(200,150,62,.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.card-inner{position:relative;z-index:1}
+.card-eyebrow{
+  font-family:var(--mono);font-size:.6rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.card-eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent)}
+
+.access-card h2{
+  font-family:var(--serif);font-size:1.5rem;
+  font-weight:400;color:var(--ivory);
+  margin-bottom:.5rem;line-height:1.2;
+}
+.access-card p{
+  font-size:.78rem;color:var(--muted);
+  line-height:1.75;letter-spacing:.02em;
+  margin-bottom:1.5rem;
+}
+
+/* CTA BUTTON */
+.cta-access{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  width:100%;
+  background:var(--burg);
+  border:1px solid var(--burg2);
+  color:var(--ivory);
+  font-family:var(--mono);
+  font-size:.72rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  padding:1.15rem 2rem;
+  border-radius:var(--r);
+  text-decoration:none;
+  transition:all .3s;
+  position:relative;overflow:hidden;
+}
+.cta-access::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.06),transparent);
+}
+.cta-access:hover{
+  background:var(--burg2);
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(107,26,42,.5);
+}
+.cta-arrow{transition:transform .25s}
+.cta-access:hover .cta-arrow{transform:translateX(4px)}
+
+.cta-note{
+  margin-top:.8rem;
+  font-family:var(--mono);font-size:.62rem;
+  color:var(--dim);letter-spacing:.06em;
+  text-align:center;
+}
+
+/* STEPS */
+.steps-card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.6rem;
+  margin-bottom:1.5rem;
+  animation:fadeUp .7s .5s ease forwards;opacity:0;
+}
+.steps-title{
+  font-family:var(--mono);font-size:.6rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.steps-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent)}
+.steps{display:flex;flex-direction:column;gap:.7rem}
+.step{
+  display:flex;align-items:flex-start;gap:.9rem;
+  padding:.7rem 0;
+  border-bottom:1px solid rgba(200,150,62,.06);
+}
+.step:last-child{border-bottom:none;padding-bottom:0}
+.step-n{
+  min-width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:.85rem;font-weight:400;
+  color:var(--gold);flex-shrink:0;
+}
+.step-body h3{
+  font-family:var(--serif);font-size:1rem;
+  font-weight:400;color:var(--ivory);margin-bottom:.15rem;
+}
+.step-body p{font-size:.75rem;color:var(--muted);line-height:1.65;letter-spacing:.01em}
+
+/* TIPS CARD */
+.tips-card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.6rem;
+  margin-bottom:1.5rem;
+  animation:fadeUp .7s .65s ease forwards;opacity:0;
+}
+.tips-title{
+  font-family:var(--mono);font-size:.6rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.tips-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.tips{display:flex;flex-direction:column;gap:.6rem}
+.tip{
+  display:flex;align-items:flex-start;gap:.7rem;
+  font-size:.76rem;color:var(--muted);
+  line-height:1.65;letter-spacing:.01em;
+}
+.tip-dot{
+  color:var(--gold);flex-shrink:0;
+  font-size:.7rem;margin-top:3px;
+}
+
+/* PROMPTS CARD */
+.prompts-card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.6rem;
+  margin-bottom:1.5rem;
+  animation:fadeUp .7s .8s ease forwards;opacity:0;
+}
+.prompts-title{
+  font-family:var(--mono);font-size:.6rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.prompts-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.prompts{display:flex;flex-direction:column;gap:.5rem}
+.prompt{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:.7rem 1rem;
+  font-family:var(--mono);font-size:.72rem;
+  color:var(--ivory2);line-height:1.55;
+  cursor:pointer;
+  transition:border-color .25s,background .25s;
+  display:flex;align-items:center;justify-content:space-between;gap:.8rem;
+}
+.prompt:hover{border-color:var(--border2);background:var(--glass2)}
+.prompt-text{flex:1}
+.prompt-copy{
+  font-size:.6rem;color:var(--dim);
+  letter-spacing:.08em;flex-shrink:0;
+  transition:color .2s;
+}
+.prompt:hover .prompt-copy{color:var(--gold)}
+.prompt.copied{border-color:var(--green-border);background:var(--green-bg)}
+.prompt.copied .prompt-copy{color:var(--green)}
+
+/* FOOTER NOTE */
+.footer-note{
+  text-align:center;
+  animation:fadeUp .7s .95s ease forwards;opacity:0;
+}
+.footer-note p{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--dim);letter-spacing:.06em;line-height:1.8;
+}
+.footer-note .logo-sm{
+  font-family:var(--serif);font-size:.9rem;
+  color:var(--muted);margin-bottom:.5rem;display:block;
+}
+.footer-note .logo-sm span{color:var(--gold)}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- LOGO -->
+  <div class="logo">Growth<span>Pilot</span> AI</div>
+
+  <!-- SUCCESS BADGE -->
+  <div class="success-badge">
+    <div class="success-dot"></div>
+    Pagamento confirmado
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="headline">
+    <h1>Seu acesso está <em>pronto.</em></h1>
+    <p>Bem-vindo. Seu consultor de marketing digital baseado em IA está disponível agora — clique abaixo e comece a usar.</p>
+  </div>
+
+  <!-- MAIN ACCESS CARD -->
+  <div class="access-card">
+    <div class="card-inner">
+      <div class="card-eyebrow">Acesso ao produto</div>
+      <h2>GrowthPilot AI</h2>
+      <p>Clique no botão abaixo para abrir seu consultor. Você será direcionado diretamente para a conversa — é só começar a perguntar.</p>
+      <a href="https://chatgpt.com/g/g-xCgTrxZLZ" target="_blank" class="cta-access">
+        Acessar o GrowthPilot AI agora
+        <span class="cta-arrow">→</span>
+      </a>
+      <p class="cta-note">✦ Funciona direto no navegador do seu celular · Sem instalação</p>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps-card">
+    <div class="steps-title">Como começar</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">I</div>
+        <div class="step-body">
+          <h3>Clique no botão acima</h3>
+          <p>Você será redirecionado para o GrowthPilot AI no ChatGPT. Se ainda não tiver conta, crie uma gratuitamente em segundos.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">II</div>
+        <div class="step-body">
+          <h3>Descreva seu negócio</h3>
+          <p>Conte quem você é, o que vende e qual é o seu maior desafio agora. Quanto mais contexto, melhor a estratégia.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">III</div>
+        <div class="step-body">
+          <h3>Receba sua estratégia</h3>
+          <p>O GrowthPilot AI vai criar um plano personalizado para o seu caso — pronto para executar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">IV</div>
+        <div class="step-body">
+          <h3>Salve o link nos favoritos</h3>
+          <p>Adicione o link aos favoritos do celular para ter acesso rápido sempre que precisar de orientação.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-card">
+    <div class="tips-title">Como tirar o máximo</div>
+    <div class="tips">
+      <div class="tip"><span class="tip-dot">◆</span><span>Seja específico. Em vez de "me ajuda a vender", diga "tenho um serviço de design gráfico, quero 3 novos clientes este mês".</span></div>
+      <div class="tip"><span class="tip-dot">◆</span><span>Peça copies prontos para copiar e usar — posts, anúncios, scripts de WhatsApp, emails. O GrowthPilot entrega tudo formatado.</span></div>
+      <div class="tip"><span class="tip-dot">◆</span><span>Mostre o que você já tem. Cole seu perfil, sua oferta ou seu anúncio e peça um diagnóstico direto.</span></div>
+      <div class="tip"><span class="tip-dot">◆</span><span>Use todos os dias. Cada dúvida que surgir no seu negócio pode virar uma pergunta — é como ter um sócio estratégico no bolso.</span></div>
+    </div>
+  </div>
+
+  <!-- PROMPTS -->
+  <div class="prompts-card">
+    <div class="prompts-title">Primeiras perguntas para começar</div>
+    <div class="prompts">
+      <div class="prompt" onclick="copyPrompt(this)">
+        <span class="prompt-text">"Crie uma estratégia completa para eu conseguir meus primeiros clientes online."</span>
+        <span class="prompt-copy">copiar</span>
+      </div>
+      <div class="prompt" onclick="copyPrompt(this)">
+        <span class="prompt-text">"Escreva um script de abordagem para eu usar no WhatsApp e fechar vendas."</span>
+        <span class="prompt-copy">copiar</span>
+      </div>
+      <div class="prompt" onclick="copyPrompt(this)">
+        <span class="prompt-text">"Crie 5 posts para o meu Instagram que gerem engajamento e atraiam clientes."</span>
+        <span class="prompt-copy">copiar</span>
+      </div>
+      <div class="prompt" onclick="copyPrompt(this)">
+        <span class="prompt-text">"Analise meu perfil e me diga o que precisa melhorar para vender mais."</span>
+        <span class="prompt-copy">copiar</span>
+      </div>
+      <div class="prompt" onclick="copyPrompt(this)">
+        <span class="prompt-text">"Monte um funil de vendas completo para o meu produto do zero."</span>
+        <span class="prompt-copy">copiar</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    <span class="logo-sm">Growth<span>Pilot</span> AI</span>
+    <p>Obrigado pela confiança. Agora é hora de executar.<br>© 2025 GrowthPilot AI · Todos os direitos reservados</p>
+  </div>
+
+</div>
+
+<script>
+function copyPrompt(el){
+  const text = el.querySelector('.prompt-text').textContent.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    el.classList.add('copied');
+    el.querySelector('.prompt-copy').textContent = '✓ copiado';
+    setTimeout(()=>{
+      el.classList.remove('copied');
+      el.querySelector('.prompt-copy').textContent = 'copiar';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
