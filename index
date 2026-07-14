@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>GrowthPilot AI — Venda Todo Dia Sem Aparecer e Sem Investir</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0D0A08;
+  --bg2:#110E0B;
+  --bg3:#1A1108;
+  --burg:#6B1A2A;
+  --burg2:#8B2235;
+  --burg3:#A52840;
+  --gold:#C8963E;
+  --gold2:#E8B05A;
+  --gold3:#F0C87A;
+  --ivory:#F5EAD0;
+  --ivory2:#E8D8B8;
+  --ivory3:#C8B898;
+  --muted:#9A8070;
+  --dim:#5A4838;
+  --border:rgba(200,150,62,0.15);
+  --border2:rgba(200,150,62,0.35);
+  --glass:rgba(200,150,62,0.04);
+  --glass2:rgba(200,150,62,0.08);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --mono:'DM Mono',monospace;
+  --r:8px;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ivory);
+  font-family:var(--mono);
+  font-size:15px;
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NOISE TEXTURE */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.032;
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  padding:.9rem 1.4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(13,10,8,.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.logo{
+  font-family:var(--serif);
+  font-size:1.15rem;font-weight:400;
+  color:var(--ivory);
+  letter-spacing:.06em;
+}
+.logo span{color:var(--gold)}
+.nav-btn{
+  font-family:var(--mono);
+  font-size:.65rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  padding:.55rem 1.1rem;
+  background:rgba(107,26,42,.5);
+  border:1px solid rgba(139,34,53,.5);
+  color:var(--ivory);
+  border-radius:var(--r);
+  text-decoration:none;
+  transition:all .25s;
+}
+.nav-btn:hover{background:var(--burg);border-color:var(--burg2)}
+
+/* HERO */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:7rem 1.4rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-glow{
+  position:absolute;top:-10%;left:50%;
+  transform:translateX(-50%);
+  width:700px;height:500px;
+  background:radial-gradient(ellipse,rgba(107,26,42,.25) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;bottom:-20%;left:50%;
+  transform:translateX(-50%);
+  width:600px;height:300px;
+  background:radial-gradient(ellipse,rgba(200,150,62,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.62rem;font-weight:500;
+  letter-spacing:.25em;text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:1.5rem;
+  display:flex;align-items:center;justify-content:center;gap:.7rem;
+}
+.eyebrow::before,.eyebrow::after{
+  content:'';width:28px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent)}
+h1{
+  font-family:var(--serif);
+  font-size:clamp(2.2rem,7vw,5rem);
+  font-weight:300;line-height:1.08;
+  letter-spacing:-.01em;
+  color:var(--ivory);
+  margin-bottom:1.4rem;
+  max-width:800px;
+}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{
+  font-family:var(--mono);
+  font-size:clamp(.78rem,2vw,.9rem);
+  color:var(--muted);
+  max-width:480px;margin:0 auto 2.5rem;
+  line-height:1.85;letter-spacing:.02em;
+}
+.cta-primary{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  background:var(--burg);
+  border:1px solid var(--burg2);
+  color:var(--ivory);
+  font-family:var(--mono);
+  font-size:.72rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  padding:1.1rem 2.4rem;
+  border-radius:var(--r);
+  text-decoration:none;
+  transition:all .3s;
+  position:relative;overflow:hidden;
+}
+.cta-primary::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.06),transparent);
+}
+.cta-primary:hover{background:var(--burg2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(107,26,42,.5)}
+.cta-arrow{transition:transform .25s}
+.cta-primary:hover .cta-arrow{transform:translateX(4px)}
+.microcopy{
+  display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;
+  justify-content:center;margin-top:1rem;
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--dim);letter-spacing:.08em;
+}
+.microcopy span{display:flex;align-items:center;gap:5px}
+.ck{color:var(--gold)}
+
+/* ORNAMENT DIVIDER */
+.divider{
+  display:flex;align-items:center;gap:1rem;
+  max-width:280px;margin:3rem auto;
+  opacity:.4;
+}
+.divider::before,.divider::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.divider::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.divider-sym{color:var(--gold);font-size:.9rem;letter-spacing:.3em}
+
+/* SECTIONS */
+section{position:relative;z-index:1}
+.sec-inner{max-width:680px;margin:0 auto}
+.sec-inner-lg{max-width:900px;margin:0 auto}
+.pad{padding:5rem 1.4rem}
+
+h2{
+  font-family:var(--serif);
+  font-size:clamp(1.8rem,5vw,3rem);
+  font-weight:300;line-height:1.15;
+  letter-spacing:-.01em;
+  color:var(--ivory);margin-bottom:.8rem;
+}
+h2 em{font-style:italic;color:var(--gold)}
+.sec-sub{
+  font-family:var(--mono);
+  font-size:.8rem;color:var(--muted);
+  line-height:1.8;letter-spacing:.02em;
+  max-width:480px;
+}
+
+/* PAIN */
+.pain{background:var(--bg2)}
+.pain .sec-inner{text-align:center}
+.pain-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;margin-top:2.5rem;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;
+}
+.pain-item{
+  background:var(--bg2);
+  padding:1.4rem 1.2rem;
+  display:flex;align-items:flex-start;gap:.8rem;
+  transition:background .25s;
+}
+.pain-item:hover{background:var(--bg3)}
+.pain-ico{font-size:1.1rem;flex-shrink:0;margin-top:2px;opacity:.7}
+.pain-item p{font-size:.8rem;color:var(--muted);line-height:1.65;letter-spacing:.01em}
+
+/* SOLUTION */
+.solution{background:var(--bg)}
+.sol-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.8rem;margin-top:2.5rem;
+}
+.sol-card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.5rem 1.2rem;
+  transition:border-color .3s,background .3s;
+}
+.sol-card:hover{border-color:var(--border2);background:var(--glass2)}
+.sol-from{
+  font-family:var(--mono);font-size:.7rem;
+  color:#C07070;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:.4rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.sol-from::before{content:'—';color:#C07070;opacity:.5}
+.sol-arrow{
+  color:var(--border2);text-align:left;
+  margin:.4rem 0;font-size:.9rem;
+}
+.sol-to{
+  font-family:var(--mono);font-size:.75rem;
+  color:var(--gold2);letter-spacing:.08em;
+  display:flex;align-items:center;gap:.5rem;
+}
+.sol-to::before{content:'→';color:var(--gold)}
+
+/* HOW */
+.how{background:var(--bg2)}
+.steps{display:flex;flex-direction:column;gap:.7rem;margin-top:2.5rem}
+.step{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.3rem 1.2rem;
+  transition:border-color .3s;
+}
+.step:hover{border-color:var(--border2)}
+.step-num{
+  min-width:36px;height:36px;
+  border-radius:50%;
+  background:transparent;
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);
+  font-size:.95rem;font-weight:400;color:var(--gold);
+  flex-shrink:0;
+}
+.step h3{
+  font-family:var(--serif);font-size:1.05rem;
+  font-weight:400;color:var(--ivory);
+  margin-bottom:.25rem;letter-spacing:.02em;
+}
+.step p{font-size:.78rem;color:var(--muted);line-height:1.7;letter-spacing:.01em}
+
+/* BENEFITS */
+.benefits{background:var(--bg)}
+.ben-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.6rem;margin-top:2.5rem;
+}
+.ben-item{
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:var(--r);padding:.9rem 1rem;
+  display:flex;align-items:center;gap:.7rem;
+  font-family:var(--mono);font-size:.75rem;
+  color:var(--muted);letter-spacing:.04em;
+  transition:border-color .25s,color .25s,background .25s;
+}
+.ben-item:hover{border-color:var(--border2);color:var(--ivory2);background:var(--glass2)}
+.ben-ico{font-size:1rem;flex-shrink:0}
+
+/* POCKET */
+.pocket{background:var(--bg2)}
+.pocket-quote{
+  background:var(--glass);
+  border:1px solid var(--border2);
+  border-left:3px solid var(--gold);
+  border-radius:0 var(--r) var(--r) 0;
+  padding:1.8rem 1.5rem;
+  margin:2rem 0;
+  font-family:var(--serif);
+  font-size:clamp(1.1rem,3vw,1.5rem);
+  font-style:italic;font-weight:300;
+  color:var(--ivory2);line-height:1.5;
+}
+.roles{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.6rem;margin-top:1.5rem;
+}
+.role{
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:var(--r);padding:.9rem 1rem;
+  display:flex;align-items:center;gap:.7rem;
+  font-family:var(--mono);font-size:.72rem;
+  color:var(--ivory2);letter-spacing:.06em;
+  transition:border-color .25s;
+}
+.role:hover{border-color:var(--border2)}
+.role-ico{font-size:1.1rem}
+
+/* OBJECTIONS */
+.obj{background:var(--bg)}
+.accordion{display:flex;flex-direction:column;gap:.5rem;margin-top:2rem}
+.acc-item{
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;
+  transition:border-color .3s;
+}
+.acc-item.open{border-color:var(--border2)}
+.acc-q{
+  width:100%;background:none;border:none;cursor:pointer;
+  padding:1rem 1.2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:.78rem;
+  color:var(--ivory2);text-align:left;gap.5rem;
+  letter-spacing:.03em;
+}
+.acc-icon{
+  color:var(--gold);font-size:1.1rem;
+  transition:transform .3s;flex-shrink:0;line-height:1;
+  font-family:var(--serif);font-weight:300;
+}
+.acc-item.open .acc-icon{transform:rotate(45deg)}
+.acc-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.acc-inner{padding:0 1.2rem 1rem;font-size:.78rem;color:var(--muted);line-height:1.8;letter-spacing:.02em}
+
+/* COMPARISON */
+.comp{background:var(--bg2)}
+.comp-wrap{overflow-x:auto;margin-top:2.5rem}
+.comp-table{width:100%;border-collapse:collapse;min-width:440px}
+.comp-table th{
+  padding:.7rem .8rem;
+  font-family:var(--mono);font-size:.65rem;
+  font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+  border-bottom:1px solid var(--border);
+  text-align:center;
+}
+.comp-table th:first-child{text-align:left}
+.comp-table th.hi{color:var(--gold)}
+.comp-table td{
+  padding:.7rem .8rem;font-size:.78rem;
+  border-bottom:1px solid rgba(200,150,62,.06);
+  color:var(--muted);text-align:center;
+  font-family:var(--mono);
+}
+.comp-table td:first-child{text-align:left;color:var(--ivory3);letter-spacing:.02em}
+.comp-table td.hi{color:var(--ivory2)}
+.comp-table tr:last-child td{border-bottom:none}
+.yes{color:#7DC99A;font-size:1rem}
+.no{color:#C07070;font-size:1rem;opacity:.7}
+
+/* FUTURE */
+.future{background:var(--bg)}
+.future-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.8rem;margin-top:2.5rem;
+}
+.future-card{
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.4rem 1.2rem;
+  transition:border-color .3s,transform .3s;
+}
+.future-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.future-ico{font-size:1.5rem;margin-bottom:.7rem;display:block}
+.future-card h3{
+  font-family:var(--serif);font-size:1.1rem;
+  font-weight:400;color:var(--ivory);margin-bottom:.4rem;
+}
+.future-card p{font-size:.76rem;color:var(--muted);line-height:1.7;letter-spacing:.02em}
+
+/* TESTIMONIALS */
+.testi{background:var(--bg2)}
+.testi-grid{
+  display:flex;flex-direction:column;
+  gap:.8rem;margin-top:2.5rem;
+}
+.testi-card{
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.4rem;
+  transition:border-color .3s;
+}
+.testi-card:hover{border-color:var(--border2)}
+.stars{color:var(--gold2);font-size:.8rem;letter-spacing:3px;margin-bottom:.7rem}
+.testi-card blockquote{
+  font-family:var(--serif);font-style:italic;
+  font-size:1rem;color:var(--ivory2);
+  line-height:1.65;margin-bottom:1rem;
+}
+.testi-author{display:flex;align-items:center;gap:.7rem}
+.tav{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--burg);border:1px solid var(--burg2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.65rem;font-weight:500;
+  color:var(--ivory2);flex-shrink:0;
+}
+.testi-author strong{
+  font-family:var(--mono);font-size:.72rem;
+  font-weight:500;color:var(--ivory);
+  display:block;letter-spacing:.04em;
+}
+.testi-author span{font-size:.65rem;color:var(--dim);letter-spacing:.06em}
+
+/* OFFER */
+.offer{background:var(--bg)}
+.offer-card{
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  border-radius:var(--r);
+  padding:2.5rem 1.8rem;
+  margin-top:2.5rem;
+  position:relative;overflow:hidden;
+}
+.offer-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.offer-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(200,150,62,.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.offer-tag{
+  display:inline-block;
+  background:rgba(107,26,42,.6);
+  border:1px solid rgba(139,34,53,.5);
+  color:var(--ivory2);
+  font-family:var(--mono);
+  font-size:.6rem;font-weight:500;
+  letter-spacing:.15em;text-transform:uppercase;
+  padding:.3rem .8rem;border-radius:4px;
+  margin-bottom:1.5rem;
+}
+.value-stack{
+  background:rgba(200,150,62,.03);
+  border:1px solid var(--border);
+  border-radius:var(--r);padding:1.2rem;
+  margin:1.5rem 0;
+}
+.vs-title{
+  font-family:var(--mono);font-size:.6rem;
+  font-weight:500;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--dim);
+  margin-bottom:.8rem;
+}
+.vs-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.45rem 0;font-size:.78rem;
+  border-bottom:1px solid rgba(200,150,62,.06);
+}
+.vs-item:last-child{border-bottom:none}
+.vs-item span{color:var(--muted);font-family:var(--mono);letter-spacing:.02em}
+.vs-item strong{color:var(--dim);text-decoration:line-through;font-size:.72rem;font-weight:400}
+.vs-total{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:.7rem;padding-top:.7rem;
+  border-top:1px solid var(--border);
+}
+.vs-total span{font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+.vs-total strong{color:#C07070;text-decoration:line-through;font-size:.85rem;font-weight:400}
+.price-block{margin:1.5rem 0;text-align:center}
+.price-label{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
+.price-main{
+  font-family:var(--serif);
+  font-size:clamp(2.8rem,8vw,4rem);
+  font-weight:300;color:var(--gold2);line-height:1;
+}
+.price-period{font-family:var(--mono);font-size:.68rem;color:var(--dim);letter-spacing:.08em;margin-top:.3rem}
+.offer-perks{
+  list-style:none;display:flex;flex-direction:column;
+  gap:.5rem;margin:1.5rem 0;
+}
+.offer-perks li{
+  display:flex;align-items:center;gap:.6rem;
+  font-family:var(--mono);font-size:.76rem;
+  color:var(--muted);letter-spacing:.02em;
+}
+.offer-perks li .ck{color:var(--gold);flex-shrink:0}
+.cta-wrap{position:relative;z-index:1;margin-top:.5rem}
+.cta-wrap .cta-primary{width:100%;font-size:.75rem}
+.guar-note{
+  margin-top:1rem;
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--dim);letter-spacing:.08em;
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+}
+
+/* GUARANTEE */
+.guarantee{background:var(--bg2)}
+.guar-card{
+  background:var(--glass);
+  border:1px solid rgba(125,201,154,.2);
+  border-radius:var(--r);padding:2.5rem 1.8rem;
+  text-align:center;
+}
+.guar-ico{font-size:2.5rem;margin-bottom:1rem;display:block}
+.guar-card h2{font-size:1.8rem;margin-bottom:.7rem}
+.guar-card p{font-size:.8rem;color:var(--muted);line-height:1.85;letter-spacing:.02em;max-width:440px;margin:0 auto}
+
+/* FAQ */
+.faq{background:var(--bg)}
+
+/* FINAL CTA */
+.final{
+  padding:6rem 1.4rem;text-align:center;
+  background:var(--bg2);position:relative;overflow:hidden;
+}
+.final-glow{
+  position:absolute;bottom:-40%;left:50%;
+  transform:translateX(-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(107,26,42,.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+.final h2{max-width:580px;margin:0 auto 1.2rem}
+.final .sec-sub{margin:0 auto 2.5rem;text-align:center}
+
+/* FOOTER */
+footer{
+  padding:1.8rem 1.4rem;text-align:center;
+  border-top:1px solid var(--border);
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--dim);letter-spacing:.08em;
+}
+
+/* STICKY BAR */
+.sticky-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:300;
+  padding:.8rem 1.4rem;
+  background:rgba(13,10,8,.97);
+  backdrop-filter:blur(20px);
+  border-top:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:space-between;gap:.8rem;
+  transform:translateY(100%);
+  transition:transform .4s ease;
+}
+.sticky-bar.show{transform:translateY(0)}
+.sticky-text strong{
+  font-family:var(--serif);font-size:.95rem;
+  font-weight:400;color:var(--ivory);display:block;
+}
+.sticky-text span{
+  font-family:var(--mono);font-size:.62rem;
+  color:var(--muted);letter-spacing:.08em;
+}
+.sticky-btn{
+  background:var(--burg);border:1px solid var(--burg2);
+  color:var(--ivory);font-family:var(--mono);
+  font-size:.65rem;font-weight:500;
+  letter-spacing:.15em;text-transform:uppercase;
+  padding:.7rem 1.2rem;border-radius:var(--r);
+  text-decoration:none;white-space:nowrap;
+  transition:all .25s;
+}
+.sticky-btn:hover{background:var(--burg2)}
+
+/* SCROLL ANIMATIONS */
+.au{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.au.vis{opacity:1;transform:translateY(0)}
+.au.d1{transition-delay:.1s}.au.d2{transition-delay:.2s}
+.au.d3{transition-delay:.3s}.au.d4{transition-delay:.4s}
+
+.hero .eyebrow{animation:fadeUp .7s .1s ease forwards;opacity:0}
+.hero h1{animation:fadeUp .7s .25s ease forwards;opacity:0}
+.hero .hero-sub{animation:fadeUp .7s .38s ease forwards;opacity:0}
+.hero .cta-primary{animation:fadeUp .7s .5s ease forwards;opacity:0}
+.hero .microcopy{animation:fadeUp .7s .62s ease forwards;opacity:0}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+  .pain-grid,.sol-grid,.ben-grid,.future-grid,.roles{grid-template-columns:1fr}
+  .comp-table th,.comp-table td{padding:.55rem .4rem;font-size:.68rem}
+  .offer-card{padding:1.8rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Growth<span>Pilot</span> AI</div>
+  <a href="https://pay.lowify.com.br/checkout?product_id=0P3QMm" class="nav-btn">Quero vender assim</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <p class="eyebrow">Venda com Inteligência Artificial</p>
+  <h1>Venda todo dia <em>sem aparecer</em><br>e sem gastar <em>um real</em><br>com anúncios</h1>
+  <p class="hero-sub">A IA que cria a estratégia, o conteúdo e os textos de venda por você — enquanto seu rosto, sua voz e sua carteira ficam de fora. Só copiar, colar e vender.</p>
+  <a href="https://pay.lowify.com.br/checkout?product_id=0P3QMm" class="cta-primary">
+    Quero vender sem aparecer agora
+    <span class="cta-arrow">→</span>
+  </a>
+  <div class="microcopy">
+    <span><span class="ck">✦</span> Acesso imediato</span>
+    <span><span class="ck">✦</span> Nunca precisa mostrar o rosto</span>
+    <span><span class="ck">✦</span> Zero investimento em anúncios</span>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain pad">
+  <div class="sec-inner">
+    <div class="au">
+      <p class="eyebrow">O diagnóstico</p>
+      <h2>Você se reconhece <em>aqui?</em></h2>
+      <p class="sec-sub" style="margin:0 auto">Se sim, o GrowthPilot AI foi criado exatamente para você.</p>
+    </div>
+    <div class="pain-grid au">
+      <div class="pain-item"><span class="pain-ico">◆</span><p>Trava na câmera e desiste de gravar vídeo</p></div>
+      <div class="pain-item"><span class="pain-ico">◆</span><p>Não tem dinheiro sobrando pra investir em anúncio</p></div>
+      <div class="pain-item"><span class="pain-ico">◆</span><p>Tem vergonha de aparecer pra quem conhece</p></div>
+      <div class="pain-item"><span class="pain-ico">◆</span><p>Vê gente vendendo sem mostrar o rosto e não sabe como</p></div>
+      <div class="pain-item"><span class="pain-ico">◆</span><p>Já perdeu dinheiro com anúncio que não trouxe retorno</p></div>
+      <div class="pain-item"><span class="pain-ico">◆</span><p>Não sabe criar conteúdo sem aparecer nem gravar áudio</p></div>
+      <div class="pain-item"><span class="pain-ico">◆</span><p>Trava na hora de escrever textos que vendem</p></div>
+      <div class="pain-item"><span class="pain-ico">◆</span><p>Começa vários projetos e desiste por falta de direção</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-sym">✦ ✦ ✦</span></div>
+
+<!-- SOLUTION -->
+<section class="solution pad" style="padding-top:1rem">
+  <div class="sec-inner">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">A virada</p>
+      <h2>De invisível pra <em>vendas visíveis</em></h2>
+      <p class="sec-sub" style="margin:0 auto">O GrowthPilot AI é a ponte entre o medo de aparecer e o primeiro depósito na conta.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-card au d1">
+        <div class="sol-from">Medo de gravar vídeo</div>
+        <div class="sol-arrow">↓</div>
+        <div class="sol-to">Conteúdo pronto sem mostrar o rosto</div>
+      </div>
+      <div class="sol-card au d2">
+        <div class="sol-from">Sem grana pra anúncio</div>
+        <div class="sol-arrow">↓</div>
+        <div class="sol-to">Estratégia 100% orgânica e gratuita</div>
+      </div>
+      <div class="sol-card au d3">
+        <div class="sol-from">Poucas ou nenhuma venda</div>
+        <div class="sol-arrow">↓</div>
+        <div class="sol-to">Novos clientes com consistência</div>
+      </div>
+      <div class="sol-card au d4">
+        <div class="sol-from">Horas de pesquisa improdutiva</div>
+        <div class="sol-arrow">↓</div>
+        <div class="sol-to">Execução em questão de minutos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how pad" style="background:var(--bg2)">
+  <div class="sec-inner">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">O método</p>
+      <h2>Quatro passos. <em>Zero aparição.</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step au d1">
+        <div class="step-num">I</div>
+        <div>
+          <h3>Abra o GrowthPilot AI</h3>
+          <p>No seu celular, a qualquer hora do dia ou da madrugada. Sem instalação, sem configuração.</p>
+        </div>
+      </div>
+      <div class="step au d2">
+        <div class="step-num">II</div>
+        <div>
+          <h3>Diga o que você quer vender</h3>
+          <p>Produto físico, digital, afiliado ou serviço — não importa se você tem vergonha de aparecer ou zero orçamento.</p>
+        </div>
+      </div>
+      <div class="step au d3">
+        <div class="step-num">III</div>
+        <div>
+          <h3>Receba tudo pronto, sem rosto</h3>
+          <p>Textos, roteiros, legendas e estratégias que vendem sem você gravar vídeo nem gastar com anúncio.</p>
+        </div>
+      </div>
+      <div class="step au d4">
+        <div class="step-num">IV</div>
+        <div>
+          <h3>Copie, cole e venda</h3>
+          <p>Publique o que a IA criou e comece a receber pedidos — mesmo escondido atrás da tela.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits pad">
+  <div class="sec-inner">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">O arsenal completo</p>
+      <h2>Uma equipe inteira <em>no seu bolso</em></h2>
+      <p class="sec-sub" style="margin:0 auto">Tudo que você pagaria uma agência ou um editor pra fazer — sem gastar e sem aparecer.</p>
+    </div>
+    <div class="ben-grid">
+      <div class="ben-item au"><span class="ben-ico">◈</span> Cria roteiros de vídeo sem você aparecer</div>
+      <div class="ben-item au d1"><span class="ben-ico">◈</span> Estrutura funis sem gastar com anúncio</div>
+      <div class="ben-item au d2"><span class="ben-ico">◈</span> Escreve legendas que vendem sozinhas</div>
+      <div class="ben-item au d3"><span class="ben-ico">◈</span> Cria conteúdo pra redes sem gravar nada</div>
+      <div class="ben-item au"><span class="ben-ico">◈</span> Analisa seu negócio e produto</div>
+      <div class="ben-item au d1"><span class="ben-ico">◈</span> Gera ideias de conteúdo anônimo sob demanda</div>
+      <div class="ben-item au d2"><span class="ben-ico">◈</span> Monta estratégia 100% orgânica, sem tráfego pago</div>
+      <div class="ben-item au d3"><span class="ben-ico">◈</span> Desenvolve ofertas irresistíveis</div>
+      <div class="ben-item au"><span class="ben-ico">◈</span> Planeja lançamentos do zero, sem investir</div>
+      <div class="ben-item au d1"><span class="ben-ico">◈</span> Escreve emails e scripts de venda</div>
+      <div class="ben-item au d2"><span class="ben-ico">◈</span> Fecha clientes no WhatsApp sem áudio nem chamada</div>
+      <div class="ben-item au d3"><span class="ben-ico">◈</span> Economiza horas de pesquisa todo dia</div>
+    </div>
+  </div>
+</section>
+
+<!-- POCKET -->
+<section class="pocket pad" style="background:var(--bg2)">
+  <div class="sec-inner">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">Seu ghostwriter de vendas</p>
+      <h2>Venda como se tivesse uma equipe, <em>sozinho e sem aparecer</em></h2>
+    </div>
+    <div class="pocket-quote au">
+      "Enquanto outros investem em anúncio e mostram o rosto o dia inteiro, você vende de trás da tela — com a estratégia e os textos prontos no seu celular."
+    </div>
+    <div class="roles">
+      <div class="role au d1"><span class="role-ico">◆</span> Roteirista Anônimo</div>
+      <div class="role au d2"><span class="role-ico">◆</span> Copywriter Especialista</div>
+      <div class="role au d3"><span class="role-ico">◆</span> Estrategista Orgânico</div>
+      <div class="role au d4"><span class="role-ico">◆</span> Consultor de Vendas</div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section class="obj pad">
+  <div class="sec-inner">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">Suas dúvidas</p>
+      <h2>A gente entende <em>suas objeções</em></h2>
+    </div>
+    <div class="accordion au">
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">"Tenho vergonha de aparecer, isso realmente funciona?" <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Sim. O GrowthPilot AI foi criado exatamente pra quem não quer ou não pode mostrar o rosto. Ele cria conteúdo, legendas e roteiros pensados pra funcionar 100% anônimo — você nunca precisa gravar vídeo nem aparecer em nada.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">"Não tenho dinheiro pra investir em anúncios." <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Você não vai precisar. O GrowthPilot AI te ensina estratégias 100% orgânicas — conteúdo, WhatsApp e alcance gratuito — pra vender sem colocar um real em tráfego pago.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">"Sou iniciante e não sei nada de marketing." <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Perfeito. O GrowthPilot AI foi feito especialmente para quem está começando do zero, sem grana e sem coragem de aparecer. Você não precisa saber nada — basta perguntar.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">"Não tenho produto para vender." <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Sem problema. O GrowthPilot AI te ajuda a descobrir qual modelo é ideal pra você — afiliado, prestador de serviço, infoprodutor — sem precisar de estoque nem investimento inicial.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">"Não tenho audiência nem seguidores." <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Você não precisa de audiência para começar a vender. O GrowthPilot AI te ensina estratégias de aquisição de clientes do zero, com conteúdo anônimo e alcance orgânico.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">"Não tenho experiência em vendas." <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">O GrowthPilot AI cria os scripts de abordagem, os argumentos e os textos de venda por você. Você copia, adapta e envia. Simples assim — mesmo sem aparecer.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">"Já tentei outras ferramentas e não funcionou." <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">O diferencial do GrowthPilot AI é que ele não entrega conteúdo genérico. Ele cria estratégias específicas pra quem quer vender sem aparecer e sem gastar — não um buscador glorificado.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comp pad" style="background:var(--bg2)">
+  <div class="sec-inner-lg">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">Comparação honesta</p>
+      <h2>Por que o GrowthPilot AI <em>ganha de todos os lados</em></h2>
+    </div>
+    <div class="comp-wrap au">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="hi">GrowthPilot AI</th>
+            <th>Aparecendo</th>
+            <th>Cursos</th>
+            <th>Anúncio pago</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Sem mostrar o rosto</td><td class="hi"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>Zero investimento em anúncio</td><td class="hi"><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td></tr>
+          <tr><td>Estratégia personalizada</td><td class="hi"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td></tr>
+          <tr><td>Resposta imediata</td><td class="hi"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td></tr>
+          <tr><td>Investimento acessível</td><td class="hi"><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td></tr>
+          <tr><td>Copies prontos para usar</td><td class="hi"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td></tr>
+          <tr><td>Ideal para iniciantes</td><td class="hi"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE -->
+<section class="future pad">
+  <div class="sec-inner">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">Sua vida depois</p>
+      <h2>Imagine como vai ser <em>daqui pra frente</em></h2>
+    </div>
+    <div class="future-grid">
+      <div class="future-card au d1">
+        <span class="future-ico">◉</span>
+        <h3>Total anonimato</h3>
+        <p>Vender sem que ninguém do seu círculo saiba — nem sua família, nem seus colegas.</p>
+      </div>
+      <div class="future-card au d2">
+        <span class="future-ico">◉</span>
+        <h3>Zero gasto com anúncio</h3>
+        <p>Cada venda sai do seu esforço orgânico, sem depender de orçamento pra tráfego pago.</p>
+      </div>
+      <div class="future-card au d3">
+        <span class="future-ico">◉</span>
+        <h3>Confiança para vender</h3>
+        <p>Scripts, argumentos e estratégias prontas para abordar qualquer cliente com segurança.</p>
+      </div>
+      <div class="future-card au d4">
+        <span class="future-ico">◉</span>
+        <h3>Crescimento constante</h3>
+        <p>Um consultor invisível que evolui com você e te ajuda a escalar a cada semana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi pad" style="background:var(--bg2)">
+  <div class="sec-inner">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">Resultados reais</p>
+      <h2>Quem usou e <em>vendeu mais</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card au">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Primeira venda em 6 dias, sem gravar um único vídeo e sem gastar com anúncio."</blockquote>
+        <div class="testi-author">
+          <div class="tav">JP</div>
+          <div><strong>João Paulo, 24 anos</strong><span>Afiliado Digital</span></div>
+        </div>
+      </div>
+      <div class="testi-card au">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Sempre tive vergonha de aparecer. Com o GrowthPilot fechei meu primeiro cliente em uma semana só com o script pronto."</blockquote>
+        <div class="testi-author">
+          <div class="tav">MC</div>
+          <div><strong>Mariana Costa, 29 anos</strong><span>Social Media</span></div>
+        </div>
+      </div>
+      <div class="testi-card au">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Saí do emprego em 2 meses sem nunca ter investido em anúncio. Hoje faturo mais do que ganhava de CLT."</blockquote>
+        <div class="testi-author">
+          <div class="tav">TA</div>
+          <div><strong>Thiago Alves, 31 anos</strong><span>Ex-CLT, hoje empreendedor</span></div>
+        </div>
+      </div>
+      <div class="testi-card au">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Não sabia nada de marketing e tinha medo de aparecer. Em 10 dias já tinha estratégia, conteúdo anônimo e meu primeiro pagamento no banco."</blockquote>
+        <div class="testi-author">
+          <div class="tav">BM</div>
+          <div><strong>Bruna Melo, 26 anos</strong><span>Iniciante, sem experiência prévia</span></div>
+        </div>
+      </div>
+      <div class="testi-card au">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Dobrei minha carteira de clientes em 3 semanas, sem investir um centavo em tráfego. Só seguindo o que o GrowthPilot orientou."</blockquote>
+        <div class="testi-author">
+          <div class="tav">RT</div>
+          <div><strong>Rafael Torres, 33 anos</strong><span>Prestador de Serviço</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer pad" id="oferta">
+  <div class="sec-inner">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">Oferta de acesso</p>
+      <h2>Tudo isso por muito menos <em>do que um único anúncio</em></h2>
+    </div>
+    <div class="offer-card au">
+      <div class="offer-tag">✦ Oferta por tempo limitado</div>
+      <div class="value-stack">
+        <div class="vs-title">O que você está recebendo</div>
+        <div class="vs-item"><span>Estratégia pra Vender Sem Aparecer</span><strong>R$ 2.000+</strong></div>
+        <div class="vs-item"><span>Roteiros e Conteúdo Anônimo Ilimitado</span><strong>R$ 1.000+</strong></div>
+        <div class="vs-item"><span>Copywriting Profissional</span><strong>R$ 1.000+</strong></div>
+        <div class="vs-item"><span>Plano de Vendas Sem Investir em Anúncio</span><strong>R$ 500+</strong></div>
+        <div class="vs-total"><span>Valor total percebido:</span><strong>R$ 4.500+</strong></div>
+      </div>
+      <div class="price-block">
+        <div class="price-label">Seu investimento hoje</div>
+        <div class="price-main">R$ 19,90</div>
+        <div class="price-period">pagamento único · acesso imediato</div>
+      </div>
+      <ul class="offer-perks">
+        <li><span class="ck">✦</span> IA disponível 24h pra vender sem aparecer</li>
+        <li><span class="ck">✦</span> Estratégias, copies e funis ilimitados</li>
+        <li><span class="ck">✦</span> Scripts prontos para WhatsApp e Instagram</li>
+        <li><span class="ck">✦</span> Método 100% orgânico, sem gastar com anúncio</li>
+        <li><span class="ck">✦</span> Conteúdo pronto sem gravar vídeo</li>
+        <li><span class="ck">✦</span> Funciona 100% pelo celular</li>
+        <li><span class="ck">✦</span> Atualizações incluídas sem custo adicional</li>
+      </ul>
+      <div class="cta-wrap">
+        <a href="https://pay.lowify.com.br/checkout?product_id=0P3QMm" class="cta-primary">
+          Quero vender sem aparecer agora
+          <span class="cta-arrow">→</span>
+        </a>
+      </div>
+      <div class="guar-note">✦ Pagamento 100% seguro · Garantia incondicional de 7 dias</div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee pad" style="padding-top:3rem">
+  <div class="sec-inner">
+    <div class="guar-card au">
+      <span class="guar-ico">◈</span>
+      <h2>Garantia de <em>7 Dias</em></h2>
+      <p>Se por qualquer motivo você não ficar satisfeito com o GrowthPilot AI nos primeiros 7 dias, devolvemos 100% do seu dinheiro. Sem perguntas. Sem burocracia. O risco é inteiramente nosso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq pad" style="background:var(--bg2)">
+  <div class="sec-inner">
+    <div class="au" style="text-align:center">
+      <p class="eyebrow">Perguntas frequentes</p>
+      <h2>Tudo que você <em>precisa saber</em></h2>
+    </div>
+    <div class="accordion au">
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">O que é exatamente o GrowthPilot AI? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">É uma IA especializada em vender sem aparecer e sem investir em anúncio. Você conversa com ela pelo celular e recebe estratégias, copies e conteúdo prontos pra vender de forma anônima e orgânica.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">Precisa instalar algum aplicativo? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Não. O GrowthPilot AI funciona direto no navegador do seu celular. Sem instalação, sem configuração. É só acessar e usar.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">Realmente não preciso aparecer em nada? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Isso mesmo. Todo o conteúdo, textos e estratégias são pensados pra funcionar sem você gravar vídeo, mostrar o rosto ou usar a própria voz.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">Preciso investir em anúncios pra funcionar? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Não. O GrowthPilot AI é focado em estratégias orgânicas — conteúdo, WhatsApp e alcance gratuito. Você não precisa colocar nenhum real em tráfego pago.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">Funciona para quem está começando do zero? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Absolutamente. Muitos usuários começaram sem produto, sem audiência, sem dinheiro e com medo de aparecer. O GrowthPilot AI te guia do zero até as primeiras vendas.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">Quantas perguntas posso fazer? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Ilimitadas. Você pode usar o GrowthPilot AI quantas vezes quiser, a qualquer hora. Não há limite de uso.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">O pagamento é recorrente ou único? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Pagamento único. Você paga uma vez e tem acesso. Sem mensalidades, sem cobranças surpresa, sem renovação automática.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">Quando recebo o acesso após a compra? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Imediatamente após a aprovação do pagamento. Você recebe o acesso na hora, sem espera.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">Funciona no iPhone e no Android? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Sim. Funciona em qualquer smartphone com acesso à internet — iPhone, Android ou qualquer outro dispositivo.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">Preciso ter experiência em tecnologia? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Não. Se você sabe usar o WhatsApp, já sabe usar o GrowthPilot AI. É uma conversa simples — você pergunta, ele responde.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">E se eu não gostar? Tem garantia? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Sim. Você tem 7 dias de garantia incondicional. Se não ficar satisfeito por qualquer motivo, devolvemos 100% do valor pago. Sem perguntas.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">O GrowthPilot AI substitui um curso de marketing? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Em muitos casos, sim. Em vez de aprender teoria por meses, você aplica na prática imediatamente e sem gastar com anúncio. O GrowthPilot AI te diz o que fazer hoje para ter resultado hoje.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" onclick="toggleAcc(this)">Posso usar para criar conteúdo para meus clientes? <span class="acc-icon">+</span></button>
+        <div class="acc-a"><div class="acc-inner">Com certeza. Muitos social medias e gestores de tráfego usam o GrowthPilot AI para entregar estratégias e copies para seus clientes, multiplicando a produtividade.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final-glow"></div>
+  <div class="sec-inner" style="position:relative;z-index:1">
+    <div class="au">
+      <p class="eyebrow">Não perca mais tempo</p>
+      <h2>Sua primeira venda sem aparecer pode estar a <em>uma conversa de distância.</em></h2>
+      <p class="sec-sub" style="text-align:center;margin:0 auto 2.5rem">Tenha acesso imediato ao GrowthPilot AI e descubra o que é vender de trás da tela, sem gastar um real com anúncio.</p>
+      <a href="https://pay.lowify.com.br/checkout?product_id=0P3QMm" class="cta-primary">
+        Quero vender sem aparecer agora
+        <span class="cta-arrow">→</span>
+      </a>
+      <div class="microcopy" style="margin-top:1.2rem">
+        <span><span class="ck">✦</span> Acesso imediato</span>
+        <span><span class="ck">✦</span> Garantia de 7 dias</span>
+        <span><span class="ck">✦</span> Pagamento único</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 GrowthPilot AI · Todos os direitos reservados</p>
+  <p style="margin-top:.4rem">Os resultados individuais podem variar conforme dedicação e execução de cada usuário.</p>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-text">
+    <strong>GrowthPilot AI</strong>
+    <span>venda sem aparecer por R$ 19,90 · pagamento único</span>
+  </div>
+  <a href="https://pay.lowify.com.br/checkout?product_id=0P3QMm" class="sticky-btn">Quero vender assim →</a>
+</div>
+
+<script>
+function toggleAcc(btn){
+  const item=btn.closest('.acc-item');
+  const ans=item.querySelector('.acc-a');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.acc-item.open').forEach(i=>{
+    i.classList.remove('open');
+    i.querySelector('.acc-a').style.maxHeight='0';
+  });
+  if(!isOpen){
+    item.classList.add('open');
+    ans.style.maxHeight=ans.scrollHeight+'px';
+  }
+}
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:.1});
+document.querySelectorAll('.au').forEach(el=>obs.observe(el));
+
+const sticky=document.getElementById('stickyBar');
+let shown=false;
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>700&&!shown){sticky.classList.add('show');shown=true}
+  if(window.scrollY<200&&shown){sticky.classList.remove('show');shown=false}
+},{ passive:true });
+</script>
+</body>
+</html>
